@@ -1,0 +1,330 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Christmas theme Login Screen.</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        * {
+            border: 0;
+            list-style-type: none;
+            margin: 0;
+            outline: none;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("https://images.pexels.com/photos/1708601/pexels-photo-1708601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Open Sans', 'sans-serif';
+            font-size: 85%;
+            overflow: hidden;
+        }
+
+        #christmasForm {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 18px;
+            height: 320px;
+            left: calc(58% - 160px);
+            position: absolute;
+            top: calc(58% - 160px);
+            width: 300px
+        }
+
+        #christmasForm p {
+            color: #FFF;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        #christmasForm input {
+            background-color: #EEE;
+            border-radius: 5px;
+            color: #111;
+            display: block;
+            height: 50px;
+            margin: 0 28px;
+            text-align: center;
+            width: 245px;
+        }
+
+        #christmasForm input:not([type="submit"]):focus {
+            box-shadow: inset 0 0 3px #000;
+        }
+
+        #christmasForm #loginBtn {
+            background-color: #900;
+            color: #FFF;
+            margin-top: 20px;
+            cursor: pointer;
+            margin-right: 30px;
+            padding: 8px 18px;
+            position: relative;
+            font-size: 16px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+
+        #christmasForm #loginBtn:active {
+            top: 2px;
+        }
+
+        #chritsmasForm #loginBtn:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .alert {
+            background: #ffdb9b;
+            padding: 20px 40px;
+            min-width: 420px;
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            overflow: hidden;
+            border-radius: 4px;
+            border-left: 8px solid #ffa502;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .alert.showAlert {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .alert.show {
+            animation: show_slide 1s ease forwards;
+        }
+
+        @keyframes show_slide {
+            0% {
+                transform: translateX(100%);
+            }
+
+            40% {
+                transform: translateX(-10%);
+            }
+
+            80% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-10px);
+            }
+
+        }
+
+        .alert.hide {
+            animation: hide_slide 1s ease forwards;
+            /* display: none; */
+        }
+
+        @keyframes hide_slide {
+            0% {
+                transform: translateX(-10px);
+            }
+
+            40% {
+                transform: translateX(0%);
+            }
+
+            80% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .alert .fa-exclamation-circle {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ce8500;
+            font-size: 30px;
+        }
+
+        .alert .msg {
+            padding: 0 20px;
+            font-size: 18px;
+            color: #ce8500;
+        }
+
+        .alert .close-btn {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ffd080;
+            padding: 20px 18px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #ffc766;
+
+        }
+
+        .close-btn .fa-times {
+            color: #ce8500;
+            font-size: 22px;
+            line-height: 40px;
+        }
+
+        /* *,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	font-family: arial;
+	font-size: 16px;
+	margin: 0;
+	background: #fff;
+	color: #000;
+} */
+
+.snow_wrap{
+	height: 100vh;
+	width: 100%;
+	/* background:url('../images/pic.jpg');
+	background-size: cover;
+	background-position: center bottom;  */
+	overflow: hidden;
+	position: relative;
+}
+
+.snow, .snow:before, .snow:after {
+  position: absolute;
+  top: -650px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: 
+  radial-gradient(4px 4px at 100px 50px, #fff , transparent), 
+  radial-gradient(6px 6px at 200px 150px, #fff, transparent), 
+  radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 50px 200px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent);
+  background-size: 650px 650px;
+  animation: snow 3s linear infinite;
+  content: "";
+}
+
+.snow:after {
+  margin-left: -250px;
+  opacity: 0.5;
+  filter: blur(2px);
+  animation-duration: 6s;
+  animation-direction: reverse;
+}
+
+.snow:before {
+	margin-left: -350px;
+  opacity: 0.7;
+  filter: blur(1px);
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+@keyframes snow {
+  to {
+    transform: translateY(650px);
+  }
+}
+
+    </style>
+
+</head>
+
+<body>
+    <div class="snow_wrap">
+        <div class="snow"></div>
+    </div>
+    <div class="alert hide">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg" id="message">Wrong passcode! Try again!</span>
+        <span class="close-btn">
+            <span class="fas fa-times"></span>
+        </span>
+    </div>
+
+    <form id="christmasForm">
+        <p>USERNAME</p>
+        <input type="text" placeholder="Username" id="username" />
+        <p>PASSCODE</p>
+        <input type="text" placeholder="Passcode" id="passcode" />
+        <input type=button id="loginBtn" onClick="login()" value="LOGIN">
+
+    </form>
+</body>
+<script>
+    function login() {
+        let passcode = document.getElementById("passcode");
+        let enteredPasscode = passcode.value;
+        let username = document.getElementById("username");
+        let enteredUser = username.value;
+
+        if (enteredUser !== "") {
+            localStorage.setItem("username", enteredUser);
+
+            if (enteredPasscode === 'FACIEE') {
+                location.href = 'index1.html';
+                //localStorage.setItem("username", enteredUser);
+            } else {
+                let message = document.getElementById("message");
+                message.innerHTML = "Wrong passcode! Try again!";
+                console.log(message.innerHTML);
+                $('.alert').removeClass("hide");
+                $('.alert').addClass("show");
+                $('.alert').addClass("showAlert");
+                setTimeout(function () {
+                    $('.alert').removeClass("show");
+                    $('.alert').addClass("hide");
+                }, 5000);
+            }
+        } else {
+            let message = document.getElementById("message");
+            message.innerHTML = "Please enter your name!";
+            console.log(message.innerHTML);
+            $('.alert').removeClass("hide");
+            $('.alert').addClass("show");
+            $('.alert').addClass("showAlert");
+            setTimeout(function () {
+                $('.alert').removeClass("show");
+                $('.alert').addClass("hide");
+            }, 5000);
+        }
+
+
+
+
+    }
+
+    $('.close-btn').click(function () {
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+    })
+</script>
+
+</html>
