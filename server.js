@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
     fs.createReadStream("./styles/style.css").pipe(res);
   } 
    if (req.method == "GET" && req.url == "/home") {
-    res.statusCode == 200;
+    res.statusCode == 304;
     res.setHeader("Content-Type", "application/json");
 
     var conn = con.getConnection();
@@ -40,6 +40,9 @@ const server = http.createServer((req, res) => {
 
     conn.end();
   } 
+
+
+
   if (req.method == "POST" && req.url == "/insert") {
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
@@ -67,6 +70,32 @@ const server = http.createServer((req, res) => {
       res.end("Success!");
     });
   } 
+
+  // if (req.method == "POST" && req.url == "/update") {
+  //   res.statusCode = 200;
+  //   res.setHeader("Content-Type", "text/plain");
+
+  //   var content = "";
+  //   req.on("data", function (data) {
+  //     content += data;
+
+  //     var obj = JSON.parse(content);
+  //     var conn = con.getConnection();
+
+  //     conn.query(
+  //       "UPDATE comments.comments SET comments.likes = (?) ",
+  //       [obj.name],
+  //       function (error, results, fields) {
+  //         if (error) throw error;
+  //         console.log("Success!");
+  //       }
+  //     );
+
+  //     conn.end();
+  //     res.end("Success!");
+  //   });
+  // } 
+  
    if (req.method == "GET" && req.url == "/functions.js") {
     res.writeHead(200, { "Content-Type": "text/javascript" });
     fs.createReadStream("./functions.js").pipe(res);

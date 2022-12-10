@@ -23,8 +23,8 @@ function loadComments() {
         likes.className = "card-likes";
         likeButton.className = "card-button";
 
-        var textName = document.createTextNode("Name: " + comment.userName);
-        var textDate = document.createTextNode("Date: " + comment.date);
+        var textName = document.createTextNode("Nume: " + comment.userName);
+        var textDate = document.createTextNode("Data: " + comment.date);
         var textMessage = document.createTextNode(comment.comment);
         var givenLikes = document.createTextNode("Likes: " + comment.likes);
         var likeButtonText = document.createTextNode("Like");
@@ -33,10 +33,14 @@ function loadComments() {
         date.appendChild(textDate);
         message.appendChild(textMessage);
         likes.appendChild(givenLikes);
+        likes.setAttribute("id", comment.ID);
         likeButton.innerHTML = "Like";
+        likeButton.style = "background-color : rgb(43, 83, 214)";
+        likeButton.setAttribute("likes", comment.likes);
+        likeButton.setAttribute("idNo", comment.ID);
         likeButton.onclick = function () {
-          comment.likes = comment.likes + 1;
-          loadComments();
+          this.likes = 4;
+          updateLikes(this.likes+1, this.idNo);
         }
 
         node.appendChild(name);
@@ -55,6 +59,9 @@ function loadComments() {
 
   xhttp.open("GET", "/home", true);
   xhttp.send();
+
+  var comments = document.getElementById("comments");
+  comments.scrollTo(0, comments.scrollHeight ); 
 }
 
 function insertComment() {
@@ -67,14 +74,11 @@ function insertComment() {
     }
   };
 
-  //var name = document.getElementById("name").value;
-
   var name = localStorage.getItem("username");
   var checkbox = document.getElementById("togbtn");
  
     if (checkbox.checked === true) {
-      name = "anonim";
-      console.log("anonim");
+      name = "Anonim";
     }
 
   var message = document.getElementById("message").value;
@@ -82,7 +86,31 @@ function insertComment() {
   xhttp.open("POST", "/insert", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send('{"name":"' + name + '", "message":"' + message + '"}');
+
 }
 
+// function updateLikes(likes, id) {
+//   var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function () {
+//     if (this.readyState == 4 && this.status == 200) {
+//       var result = this.responseText;
+//       console.log(result);
+//       loadComments();
+//     }
+//   };
 
+//   xhttp.open("POST", "/update", true);
+//   xhttp.setRequestHeader("Content-Type", "application/json");
+//   xhttp.send('{"likes":"' + likes +'"}');
+// }
+
+//changes name to anonimous on click
+function changeName() {
+  var checkbox = document.getElementById("togbtn");
+  if (checkbox.checked === true) {
+    document.getElementById("name").innerHTML = "Anonim";
+  }else{
+    document.getElementById("name").innerHTML = localStorage.getItem("username");
+  }
+}
 

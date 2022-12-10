@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Christmas theme Login Screen.</title>
+    <title> Craciun FACIEE</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -34,9 +34,9 @@
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 18px;
             height: 320px;
-            left: calc(58% - 160px);
+            left: calc(50% - 160px);
             position: absolute;
-            top: calc(58% - 160px);
+            top: calc(50% - 160px);
             width: 300px
         }
 
@@ -51,6 +51,7 @@
         #christmasForm input {
             background-color: #EEE;
             border-radius: 5px;
+
             color: #111;
             display: block;
             height: 50px;
@@ -186,99 +187,96 @@
             line-height: 40px;
         }
 
-        /* *,*:after,*:before{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-}
-body{
-	font-family: arial;
-	font-size: 16px;
-	margin: 0;
-	background: #fff;
-	color: #000;
-} */
+        .snow_wrap {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
 
-.snow_wrap{
-	height: 100vh;
-	width: 100%;
-	/* background:url('../images/pic.jpg');
-	background-size: cover;
-	background-position: center bottom;  */
-	overflow: hidden;
-	position: relative;
-}
+        .snow,
+        .snow:before,
+        .snow:after {
+            position: absolute;
+            top: -650px;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image:
+                radial-gradient(4px 4px at 100px 50px, #fff, transparent),
+                radial-gradient(6px 6px at 200px 150px, #fff, transparent),
+                radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent),
+                radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent),
+                radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent),
+                radial-gradient(3px 3px at 50px 200px, #fff 50%, transparent),
+                radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent),
+                radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent),
+                radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent);
+            background-size: 650px 650px;
+            animation: snow 3s linear infinite;
+            content: "";
+        }
 
-.snow, .snow:before, .snow:after {
-  position: absolute;
-  top: -650px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-image: 
-  radial-gradient(4px 4px at 100px 50px, #fff , transparent), 
-  radial-gradient(6px 6px at 200px 150px, #fff, transparent), 
-  radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent), 
-  radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent), 
-  radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent), 
-  radial-gradient(3px 3px at 50px 200px, #fff 50%, transparent), 
-  radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent), 
-  radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent), 
-  radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent);
-  background-size: 650px 650px;
-  animation: snow 3s linear infinite;
-  content: "";
-}
+        .snow:after {
+            margin-left: -250px;
+            opacity: 0.5;
+            filter: blur(2px);
+            animation-duration: 6s;
+            animation-direction: reverse;
+        }
 
-.snow:after {
-  margin-left: -250px;
-  opacity: 0.5;
-  filter: blur(2px);
-  animation-duration: 6s;
-  animation-direction: reverse;
-}
+        .snow:before {
+            margin-left: -350px;
+            opacity: 0.7;
+            filter: blur(1px);
+            animation-duration: 9s;
+            animation-direction: reverse;
+        }
 
-.snow:before {
-	margin-left: -350px;
-  opacity: 0.7;
-  filter: blur(1px);
-  animation-duration: 9s;
-  animation-direction: reverse;
-}
-
-@keyframes snow {
-  to {
-    transform: translateY(650px);
-  }
-}
-
+        @keyframes snow {
+            to {
+                transform: translateY(650px);
+            }
+        }
     </style>
 
 </head>
+<!-- <embed height="60" type="audio/midi" width="144" src="jingle-bells.mp3" volume="60" loop="true" autostart="true" /> -->
+
 
 <body>
+   <audio controls src="jingle-bells.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
+   <script type="text/javascript">
+    window.onload=function(){
+      document.getElementById("my_audio").play();
+    }
+  </script>
     <div class="snow_wrap">
         <div class="snow"></div>
     </div>
     <div class="alert hide">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg" id="message">Wrong passcode! Try again!</span>
+        <span class="msg" id="message">Cod gresit! Incearca FACIEE..</span>
         <span class="close-btn">
             <span class="fas fa-times"></span>
         </span>
     </div>
 
     <form id="christmasForm">
-        <p>USERNAME</p>
-        <input type="text" placeholder="Username" id="username" />
-        <p>PASSCODE</p>
-        <input type="text" placeholder="Passcode" id="passcode" />
-        <input type=button id="loginBtn" onClick="login()" value="LOGIN">
+        
+        <p>NUME UTILIZATOR</p>
+        <input type="text" placeholder="Nume Utilizator" id="username" />
+        <p>COD LOGARE</p>
+        <input type="text" placeholder="Cod Logare" id="passcode" />
+        <input type=button id="loginBtn" onClick="login()" value="LOGARE">
 
     </form>
 </body>
 <script>
+    $(document).ready(function() {
+    $("#my_audio").get(0).play();
+});
+
     function login() {
         let passcode = document.getElementById("passcode");
         let enteredPasscode = passcode.value;
@@ -293,7 +291,7 @@ body{
                 //localStorage.setItem("username", enteredUser);
             } else {
                 let message = document.getElementById("message");
-                message.innerHTML = "Wrong passcode! Try again!";
+                message.innerHTML = "Cod gresit! Incearca FACIEE..";
                 console.log(message.innerHTML);
                 $('.alert').removeClass("hide");
                 $('.alert').addClass("show");
@@ -305,7 +303,7 @@ body{
             }
         } else {
             let message = document.getElementById("message");
-            message.innerHTML = "Please enter your name!";
+            message.innerHTML = "Te rog, introdu un nume!";
             console.log(message.innerHTML);
             $('.alert').removeClass("hide");
             $('.alert').addClass("show");
@@ -315,10 +313,6 @@ body{
                 $('.alert').addClass("hide");
             }, 5000);
         }
-
-
-
-
     }
 
     $('.close-btn').click(function () {
