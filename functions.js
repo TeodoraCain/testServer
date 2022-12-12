@@ -50,10 +50,12 @@ function loadComments() {
             comment.likes = comment.likes - 1;
             likes.innerHTML = "Likes: " + comment.likes;
             this.clicked = true;
+            this.innerHTML = "Like";
           } else {
             comment.likes = comment.likes + 1;
             likes.innerHTML = "Likes: " + comment.likes;
             this.clicked = false;
+            this.innerHTML = "Unlike";
           }
         }
 
