@@ -1,12 +1,13 @@
 body {
-  background-image: url("https://images.pexels.com/photos/1303091/pexels-photo-1303091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  /* background-image: url("https://images.pexels.com/photos/1686559/pexels-photo-1686559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+   background-image: url("https://images.pexels.com/photos/1303091/pexels-photo-1303091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); 
   /* background-image: url("https://images.unsplash.com/photo-1512474932049-78ac69ede12c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8&w=1000&q=80"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Open Sans', 'sans-serif';
   font-size: 85%;
-  overflow: scroll;
+  overflow: hidden;
   margin-top: 8%;
   margin-bottom: 10%;
 }

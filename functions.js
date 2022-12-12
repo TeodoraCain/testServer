@@ -16,15 +16,18 @@ function loadComments() {
         var message = document.createElement("P");
         var likes = document.createElement("H6");
         var likeButton = document.createElement("button");
+        
 
         node.className = "card-body";
         name.className = "card-title";
         date.className = "card-subtitle text-muted";
         likes.className = "card-likes";
         likeButton.className = "card-button";
+        
+        var data = new Date(comment.date);
 
         var textName = document.createTextNode("Nume: " + comment.userName);
-        var textDate = document.createTextNode("Data: " + comment.date);
+        var textDate = document.createTextNode("Data: " + data);
         var textMessage = document.createTextNode(comment.comment);
         var givenLikes = document.createTextNode("Likes: " + comment.likes);
         var likeButtonText = document.createTextNode("Like");
@@ -33,14 +36,25 @@ function loadComments() {
         date.appendChild(textDate);
         message.appendChild(textMessage);
         likes.appendChild(givenLikes);
+        //likes.innerHTML = givenLikes;
+        likes.setAttribute("nrOfLikes", comment.likes);
         likes.setAttribute("id", comment.ID);
+
         likeButton.innerHTML = "Like";
         likeButton.style = "background-color : rgb(43, 83, 214)";
-        likeButton.setAttribute("likes", comment.likes);
-        likeButton.setAttribute("idNo", comment.ID);
+        likeButton.setAttribute("clicked", false);
         likeButton.onclick = function () {
-          this.likes = 4;
-          updateLikes(this.likes+1, this.idNo);
+          var likes = document.getElementById(comment.ID);
+          
+          if (this.clicked === false) {
+            comment.likes = comment.likes - 1;
+            likes.innerHTML = "Likes: " + comment.likes;
+            this.clicked = true;
+          } else {
+            comment.likes = comment.likes + 1;
+            likes.innerHTML = "Likes: " + comment.likes;
+            this.clicked = false;
+          }
         }
 
         node.appendChild(name);
@@ -61,7 +75,7 @@ function loadComments() {
   xhttp.send();
 
   var comments = document.getElementById("comments");
-  comments.scrollTo(0, comments.scrollHeight ); 
+  comments.scrollTo(0, comments.scrollHeight);
 }
 
 function insertComment() {
@@ -76,10 +90,10 @@ function insertComment() {
 
   var name = localStorage.getItem("username");
   var checkbox = document.getElementById("togbtn");
- 
-    if (checkbox.checked === true) {
-      name = "Anonim";
-    }
+
+  if (checkbox.checked === true) {
+    name = "Anonim";
+  }
 
   var message = document.getElementById("message").value;
 
@@ -109,7 +123,7 @@ function changeName() {
   var checkbox = document.getElementById("togbtn");
   if (checkbox.checked === true) {
     document.getElementById("name").innerHTML = "Anonim";
-  }else{
+  } else {
     document.getElementById("name").innerHTML = localStorage.getItem("username");
   }
 }

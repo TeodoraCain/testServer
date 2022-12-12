@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="styles/styleLogin.css" />
     <style>
         * {
             border: 0;
@@ -239,18 +240,11 @@
             }
         }
     </style>
-
 </head>
-<!-- <embed height="60" type="audio/midi" width="144" src="jingle-bells.mp3" volume="60" loop="true" autostart="true" /> -->
-
 
 <body>
-   <audio controls src="jingle-bells.mp3" id="my_audio" loop="loop" autoplay="autoplay"></audio>
-   <script type="text/javascript">
-    window.onload=function(){
-      document.getElementById("my_audio").play();
-    }
-  </script>
+
+    <!-- <audio controls src="jingle-bells.mp3" id="my_audio" preload="auto" loop="loop" autoplay="autoplay"></audio> -->
     <div class="snow_wrap">
         <div class="snow"></div>
     </div>
@@ -263,7 +257,7 @@
     </div>
 
     <form id="christmasForm">
-        
+
         <p>NUME UTILIZATOR</p>
         <input type="text" placeholder="Nume Utilizator" id="username" />
         <p>COD LOGARE</p>
@@ -273,9 +267,9 @@
     </form>
 </body>
 <script>
-    $(document).ready(function() {
-    $("#my_audio").get(0).play();
-});
+    $(document).ready(function () {
+        $("#my_audio").get(0).play();
+    });
 
     function login() {
         let passcode = document.getElementById("passcode");
