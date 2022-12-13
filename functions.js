@@ -36,7 +36,6 @@ function loadComments() {
         date.appendChild(textDate);
         message.appendChild(textMessage);
         likes.appendChild(givenLikes);
-        //likes.innerHTML = givenLikes;
         likes.setAttribute("nrOfLikes", comment.likes);
         likes.setAttribute("id", comment.ID);
 
@@ -120,7 +119,7 @@ function insertComment() {
 //   xhttp.send('{"likes":"' + likes +'"}');
 // }
 
-//changes name to anonimous on click
+//changes name to anonymous on click
 function changeName() {
   var checkbox = document.getElementById("togbtn");
   if (checkbox.checked === true) {

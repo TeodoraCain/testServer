@@ -31,7 +31,6 @@ const server = http.createServer((req, res) => {
     conn.query(
       "SELECT * FROM comments.comments",
       function (error, results, fields) {
-       // if (error) throw error;
 
         var comments = JSON.stringify(results);
 
